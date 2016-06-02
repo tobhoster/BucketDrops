@@ -5,8 +5,18 @@
     android:layout_height="match_parent"
     tools:context="bucketdrops.design.hello.bucketdrops.ActivityMain">
 
+    <!-- Toolbar - toolbar.xml  -->
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar"/>
+
+    <!-- ImageView for Background   -->
+    <ImageView
+        android:id="@+id/iv_background"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!--Add a Drop View - empty_drops.xml-->
     <include layout="@layout/empty_drops"/>
 </RelativeLayout>

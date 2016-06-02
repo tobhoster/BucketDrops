@@ -14,8 +14,8 @@
         android:contentDescription="@string/logo_message" />
 
     <Button
-        android:background="@drawable/bg_btn_add_it"
         android:id="@+id/btn_add"
+        android:background="@drawable/bg_btn_add_it"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
