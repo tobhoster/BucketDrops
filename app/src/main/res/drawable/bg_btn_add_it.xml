@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- When the "Add a Drop" is pressed.  -->
     <!-- Pressed State  -->
     <item android:state_pressed="true">
         <shape>
@@ -7,7 +8,8 @@
             <corners android:radius="@dimen/btn_add_it_corner_radius_green"/>
         </shape>
     </item>
-    <!-- Default State  -->
+
+    <!-- Default State "Add a Drop" -->
     <item>
         <shape>
             <stroke android:width="@dimen/btn_add_it_stroke_width" android:color="@color/purple"/>

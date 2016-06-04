@@ -19,11 +19,11 @@ public class ActivityMain extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mBtnAdd = (Button) findViewById(R.id.btn_add);
-        setSupportActionBar(mToolbar);  /*  Set ActionBar   */
-        initBackgroundImage(); /* Background Method */
+        setContentView(R.layout.activity_main); /* Set Layout for the Application   */
+        mToolbar = (Toolbar) findViewById(R.id.toolbar); /* Define the View for TOolbar, toolbar  */
+        mBtnAdd = (Button) findViewById(R.id.btn_add); /*   Define the View for Button, btn_add    */
+        setSupportActionBar(mToolbar);  /*  Set ActionBar - Just define mToolBar as ActionBar   */
+        initBackgroundImage(); /* Initialize the Background Method */
 
         mBtnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +34,9 @@ public class ActivityMain extends AppCompatActivity {
     }
 
     /*  Set the background for the Home View    */
+    /*  The initBackgroundImage
+    *   Uses the ImageView to set the background. Defining the View as iv_background.
+    *   A depencidies was import called Glide, used to set the background.*/
     private void initBackgroundImage() {
         ImageView background = (ImageView) findViewById(R.id.iv_background);
         Glide.with(this)
