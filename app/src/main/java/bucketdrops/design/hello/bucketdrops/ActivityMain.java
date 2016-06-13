@@ -1,5 +1,6 @@
 package bucketdrops.design.hello.bucketdrops;
 
+import android.app.Dialog;
 import android.graphics.Matrix;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,9 +29,14 @@ public class ActivityMain extends AppCompatActivity {
         mBtnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ActivityMain.this, "Button was clicked", Toast.LENGTH_SHORT).show();
+                showDialogAdd();
             }
         });
+    }
+
+    private void showDialogAdd() {
+        DialogAdd dialog = new DialogAdd();
+        dialog.show(getSupportFragmentManager(), "Add");
     }
 
     /*  Set the background for the Home View    */
