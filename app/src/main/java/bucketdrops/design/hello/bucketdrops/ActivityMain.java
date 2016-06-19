@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.graphics.Matrix;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,7 @@ public class ActivityMain extends AppCompatActivity {
 
     Toolbar mToolbar;
     Button mBtnAdd;
+    RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,8 @@ public class ActivityMain extends AppCompatActivity {
         mBtnAdd = (Button) findViewById(R.id.btn_add); /*   Define the View for Button, btn_add    */
         setSupportActionBar(mToolbar);  /*  Set ActionBar - Just define mToolBar as ActionBar   */
         initBackgroundImage(); /* Initialize the Background Method */
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.rv_drops);
 
         mBtnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
