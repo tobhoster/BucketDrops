@@ -1,17 +1,17 @@
 package bucketdrops.design.hello.bucketdrops;
 
-import android.app.Dialog;
-import android.graphics.Matrix;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+
+import bucketdrops.design.hello.bucketdrops.adapter.AdapterDrops;
 
 public class ActivityMain extends AppCompatActivity {
 
@@ -29,6 +29,7 @@ public class ActivityMain extends AppCompatActivity {
         initBackgroundImage(); /* Initialize the Background Method */
 
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_drops);
+        mRecyclerView.setAdapter(new AdapterDrops(this));
 
         mBtnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
