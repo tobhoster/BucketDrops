@@ -2,8 +2,6 @@ package bucketdrops.design.hello.bucketdrops;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +12,7 @@ import com.bumptech.glide.Glide;
 
 import bucketdrops.design.hello.bucketdrops.adapter.AdapterDrops;
 import bucketdrops.design.hello.bucketdrops.beans.Drop;
+import bucketdrops.design.hello.bucketdrops.widgets.BucketRecyclerView;
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
@@ -22,10 +21,11 @@ public class ActivityMain extends AppCompatActivity {
 
     Toolbar mToolbar;
     Button mBtnAdd;
-    RecyclerView mRecyclerView;
+    BucketRecyclerView mRecyclerView;
     Realm mRealm;
     RealmResults<Drop> mResults;
     AdapterDrops mAdapter;
+    View mEmptyView;
 
     private final String TAG = "ActivityMain";
 
@@ -44,6 +44,11 @@ public class ActivityMain extends AppCompatActivity {
         }
     };
 
+    private void showDialogAdd() {
+        DialogAdd dialog = new DialogAdd();
+        dialog.show(getSupportFragmentManager(), "Add");
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,20 +56,20 @@ public class ActivityMain extends AppCompatActivity {
         mRealm = Realm.getDefaultInstance();
         mResults = mRealm.where(Drop.class).findAllAsync();
         mToolbar = (Toolbar) findViewById(R.id.toolbar); /* Define the View for TOolbar, toolbar  */
+        mEmptyView = findViewById(R.id.empty_drops);
         mBtnAdd = (Button) findViewById(R.id.btn_add); /*   Define the View for Button, btn_add    */
-        mRecyclerView = (RecyclerView) findViewById(R.id.rv_drops);
+
+        mRecyclerView = (BucketRecyclerView) findViewById(R.id.rv_drops);
+        mRecyclerView.hideIfEmpty(mToolbar);
+        mRecyclerView.showIfEmpty(mEmptyView);
+
         mAdapter = new AdapterDrops(this, mResults);
         mRecyclerView.setAdapter(mAdapter);
-        mBtnAdd.setOnClickListener(mBtnAddListener);
 
+        mBtnAdd.setOnClickListener(mBtnAddListener);
 
         setSupportActionBar(mToolbar);  /*  Set ActionBar - Just define mToolBar as ActionBar   */
         initBackgroundImage(); /* Initialize the Background Method */
-    }
-
-    private void showDialogAdd() {
-        DialogAdd dialog = new DialogAdd();
-        dialog.show(getSupportFragmentManager(), "Add");
     }
 
     @Override
